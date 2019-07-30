@@ -2,7 +2,7 @@ getNews();
 
 function getNews() {
     var game_content = document.getElementById("news");
-    var getNewsPaper = "https://beta-dot-assignmentcrawler.appspot.com/_api/article";
+    var getNewsPaper = "https://beta-dot-assignmentcrawler.appspot.com/_api/article?ct=khoa-hoc";
     if (localStorage.getItem) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
@@ -10,7 +10,7 @@ function getNews() {
 
             if (this.readyState == 4 && this.status == 200) {
                 var obj = JSON.parse(xhttp.responseText);
-                for (var i = 0; i < 10; i++) {
+                for (var i = 0; i < obj.data.length; i++) {
                     var image;
                     if (obj.data[i].thumbnail == 0) {
                         image = "https://q5v8e3s3.stackpathcdn.com/wp-content/uploads/2019/04/news-default-image-300x225.jpg";
